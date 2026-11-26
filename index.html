@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Bewick — Mentoria Executiva em Inglês Britânico</title>
+    <meta name="description" content="Aulas particulares e mentoria de inglês britânico com Daniel Bewick. Nascido em Londres, com trajetória na hotelaria de luxo 5 estrelas atendendo grandes artistas e líderes.">
+
+    <!-- Google Fonts: Cinzel, Cormorant Garamond e Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET E DESIGN TOKENS ========== */
+        :root {
+            --ebony: #0b0908;
+            --mahogany: #14100e;
+            --walnut: #1f1814;
+            --brass: #c5a059;
+            --brass-muted: #8c6d32;
+            --whisky: #b35c1e;
+            --ivory: #ede6d6;
+            --parchment: #a89f91;
+            --gold-line: rgba(197, 160, 89, 0.22);
+            --gold-line-soft: rgba(197, 160, 89, 0.18);
+            --bg-ebony: #0b0908;
+            --gold-brass: #c5a059;
+            --ivory-text: #ede6d6;
+
+            /* Tipografia fluida com clamp() */
+            --hero-title: clamp(1.6rem, 5.5vw, 4rem);
+            --section-heading: clamp(1.6rem, 5vw, 2.6rem);
+            --editorial-italic: clamp(1.1rem, 2.8vw, 1.6rem);
+            --body-text: clamp(0.95rem, 2vw, 1.08rem);
+            --drop-cap-size: clamp(2.8rem, 6vw, 4.1rem);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-ebony);
+            color: var(--ivory-text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f100; }
+        ::-webkit-scrollbar-thumb { background: #f1be1738; }
+        ::-webkit-scrollbar-thumb:hover { background: #cc0b0b21; }
+
+        ::selection {
+            background-color: rgba(197, 160, 89, 0.3);
+            color: #ede6d6;
+        }
+
+        /* ========== UTILITÁRIOS ========== */
+        .container {
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        .hairline-b { border-bottom: 1px solid var(--gold-line); }
+        .hairline-t { border-top: 1px solid var(--gold-line); }
+        .hairline-l { border-left: 1px solid var(--gold-line); }
+
+        .text-brass { color: var(--brass); }
+        .text-ivory { color: var(--ivory); }
+        .text-parchment { color: var(--parchment); }
+
+        .font-monumental { font-family: 'Cinzel', serif; }
+        .font-decorative { font-family: 'Cinzel Decorative', serif; }
+        .font-editorial { font-family: 'Cormorant Garamond', serif; }
+        .font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* ========== TEXTURA E FUNDO ========== */
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .ambient-glow {
+            background: radial-gradient(circle at 75% 20%, rgba(179, 92, 30, 0.09) 0%, rgba(197, 160, 89, 0.04) 35%, rgba(11, 9, 8, 0) 70%);
+        }
+
+        /* ========== GLOBO DE FUNDO ========== */
+        #antique-globe-bg {
+            position: fixed;
+            right: -8rem;
+            top: 6rem;
+            width: 480px;
+            height: 480px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.075;
+            transition: transform 300ms ease-out;
+        }
+
+        @media (min-width: 768px) {
+            #antique-globe-bg {
+                right: -5rem;
+                top: 4rem;
+                width: 740px;
+                height: 740px;
+            }
+        }
+
+        #antique-globe-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ========== CABEÇALHO ========== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background-color: rgba(11, 9, 8, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gold-line);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-inner {
+                height: 6rem;
+                padding: 0 3rem;
+            }
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== LOGO COM IMAGEM CIRCULAR ===== */
+        .monogram {
+            position: relative;
+            width: 2.75rem;
+            height: 2.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .monogram svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--brass);
+            transition: transform 700ms ease;
+        }
+
+        .brand-link:hover .monogram svg {
+            transform: rotate(45deg);
+        }
+
+        /* Imagem circular dentro do círculo */
+        .monogram .logo-img {
+            position: absolute;
+            width: 68%;
+            height: 68%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(197, 160, 89, 0.6);
+            z-index: 2;
+            pointer-events: none;
+            filter: sepia(0.2) contrast(1.05);
+        }
+
+        .brand-text {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .brand-text {
+                display: block;
+            }
+        }
+
+        .brand-text .name {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--ivory);
+        }
+
+        .brand-text .location {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.875rem;
+            color: var(--brass);
+        }
+
+        .main-nav {
+            display: none;
+            align-items: center;
+            gap: 2.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--parchment);
+        }
+
+        @media (min-width: 768px) {
+            .main-nav {
+                display: flex;
+            }
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 300ms ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--brass);
+        }
+
+        .header-cta {
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--brass);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.5);
+            padding-bottom: 0.25rem;
+            transition: color 300ms ease, border-color 300ms ease;
+            white-space: nowrap;
+        }
+
+        .header-cta:hover {
+            color: var(--ivory);
+            border-bottom-color: var(--ivory);
+        }
+
+        /* ========== BOTÕES ========== */
+        .btn-atelier {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.85rem;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(197, 160, 89, 0.45);
+            background: linear-gradient(135deg, rgba(31, 24, 20, 0.7) 0%, rgba(11, 9, 8, 0.9) 100%);
+            color: var(--ivory);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-atelier::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.14), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.65s ease;
+        }
+
+        .btn-atelier:hover {
+            border-color: var(--brass);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -10px rgba(179, 92, 30, 0.25);
+        }
+
+        .btn-atelier:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn-primary-gold {
+            background: linear-gradient(135deg, #c5a059 0%, #9b7734 100%);
+            color: #0b0908;
+            border: 1px solid #d8b773;
+            font-weight: 500;
+        }
+
+        .btn-primary-gold:hover {
+            background: linear-gradient(135deg, #d6b26b 0%, #ad873f 100%);
+            color: #0b0908;
+            box-shadow: 0 12px 32px -8px rgba(197, 160, 89, 0.35);
+        }
+
+        .btn-atelier svg {
+            flex-shrink: 0;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 6rem 3rem 9rem;
+            }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 7fr 5fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-ornament {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--brass);
+        }
+
+        .hero-ornament svg {
+            flex-shrink: 0;
+            width: 38px;
+            height: 14px;
+        }
+
+        .hero-ornament span {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            letter-spacing: 0.03em;
+            color: var(--brass);
+            line-height: 1.3;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: var(--hero-title);
+            line-height: 1.08;
+            letter-spacing: -0.015em;
+            color: var(--ivory);
+        }
+
+        .hero-title .subtitle {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--brass);
+            margin-top: 0.5rem;
+            font-size: 0.72em;
+            line-height: 1.15;
+        }
+
+        .hero-divider {
+            width: 6rem;
+            height: 1px;
+            background-color: rgba(197, 160, 89, 0.6);
+        }
+
+        .hero-description {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 300;
+            font-size: var(--body-text);
+            color: var(--parchment);
+            line-height: 1.7;
+            max-width: 36rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                align-items: center;
+                gap: 1.25rem;
+            }
+        }
+
+        /* Hero photo */
+        .hero-photo-col {
+            position: relative;
+        }
+
+        .hero-corner-ornament {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .hero-corner-ornament {
+                display: block;
+                position: absolute;
+                top: -1.5rem;
+                right: -1.5rem;
+                width: 7rem;
+                height: 7rem;
+                border-top: 1px solid rgba(197, 160, 89, 0.35);
+                border-right: 1px solid rgba(197, 160, 89, 0.35);
+                pointer-events: none;
+            }
+        }
+
+        .editorial-photo-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editorial-photo-wrap img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.06) sepia(0.14) brightness(0.92);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+        }
+
+        .editorial-photo-wrap:hover img {
+            transform: scale(1.03);
+            filter: contrast(1.08) sepia(0.06) brightness(0.98);
+        }
+
+        .photo-brass-frame {
+            position: absolute;
+            inset: 14px;
+            border: 1px solid rgba(197, 160, 89, 0.32);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .hero-photo {
+            aspect-ratio: 4/5;
+            width: 100%;
+            max-width: 28rem;
+            margin: 0 auto;
+            background-color: var(--mahogany);
+        }
+
+        @media (min-width: 1024px) {
+            .hero-photo {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+
+        .hero-caption {
+            margin-top: 1rem;
+            position: relative;
+            z-index: 20;
+            background-color: rgba(11, 9, 8, 0.95);
+            border-left: 1px solid var(--brass);
+            padding: 0.75rem 1.5rem 0.75rem 1.25rem;
+            max-width: 20rem;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-caption {
+                margin-left: -3rem;
+                margin-top: -2.5rem;
+            }
+        }
+
+        .hero-caption p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--ivory);
+            line-height: 1.35;
+        }
+
+        .hero-caption span {
+            display: block;
+            margin-top: 0.375rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.625rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--brass);
+        }
+
+        /* ========== DIVISOR ========== */
+        .ornament-divider {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .ornament-divider {
+                padding: 0 3rem;
+            }
+        }
+
+        .ornament-divider-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .ornament-divider-line {
+            height: 1px;
+            flex: 1;
+        }
+
+        .ornament-divider-line.left {
+            background: linear-gradient(to right, transparent, rgba(197, 160, 89, 0.3));
+        }
+
+        .ornament-divider-line.right {
+            background: linear-gradient(to left, transparent, rgba(197, 160, 89, 0.3));
+        }
+
+        .ornament-divider svg {
+            flex-shrink: 0;
+        }
+
+        /* ========== SEÇÃO TRAJETÓRIA ========== */
+        .trajectory {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 6rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .trajectory {
+                padding: 9rem 3rem;
+            }
+        }
+
+        .trajectory-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        @media (min-width: 1024px) {
+            .trajectory-grid {
+                grid-template-columns: 5fr 7fr;
+                gap: 4rem;
+            }
+        }
+
+        .trajectory-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--brass);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: var(--section-heading);
+            line-height: 1.15;
+            color: var(--ivory);
+        }
+
+        .trajectory-photo {
+            aspect-ratio: 16/11;
+            width: 100%;
+            background-color: var(--mahogany);
+        }
+
+        .trajectory-quote {
+            border-left: 1px solid var(--gold-line);
+            padding-left: 1.5rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .trajectory-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: rgba(237, 230, 214, 0.95);
+            line-height: 1.6;
+        }
+
+        .trajectory-quote footer {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--brass);
+        }
+
+        .trajectory-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 300;
+            font-size: var(--body-text);
+            line-height: 1.85;
+            color: var(--parchment);
+        }
+
+        @media (min-width: 1024px) {
+            .trajectory-right {
+                padding-left: 2rem;
+            }
+        }
+
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: var(--drop-cap-size);
+            line-height: 0.82;
+            padding-top: 6px;
+            padding-right: 14px;
+            padding-bottom: 4px;
+            color: var(--brass);
+        }
+
+        .trajectory-right .highlight {
+            color: var(--ivory);
+            font-weight: 400;
+        }
+
+        .trajectory-right .editorial-highlight {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--brass);
+        }
+
+        .trajectory-facts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--gold-line);
+        }
+
+        @media (min-width: 640px) {
+            .trajectory-facts {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .fact .fact-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--brass);
+            display: block;
+        }
+
+        .fact .fact-sub {
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(168, 159, 145, 0.8);
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        @media (min-width: 640px) {
+            .fact:not(:first-child) {
+                border-left: 1px solid var(--gold-line);
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* ========== SEÇÃO METODOLOGIA ========== */
+        .methodology {
+            position: relative;
+            padding: 6rem 0;
+            border-top: 1px solid var(--gold-line);
+            border-bottom: 1px solid var(--gold-line);
+            background-color: rgba(20, 16, 14, 0.4);
+        }
+
+        @media (min-width: 768px) {
+            .methodology {
+                padding: 9rem 0;
+            }
+        }
+
+        .methodology .container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .methodology .container {
+                padding: 0 3rem;
+            }
+        }
+
+        .methodology-header {
+            max-width: 42rem;
+            margin-bottom: 5rem;
+        }
+
+        .methodology-header .section-heading {
+            margin-bottom: 1rem;
+        }
+
+        .methodology-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+            color: var(--parchment);
+            line-height: 1.5;
+        }
+
+        .pillars {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--gold-line-soft);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .pillar:first-child {
+            border-top: 1px solid var(--gold-line-soft);
+        }
+
+        @media (min-width: 768px) {
+            .pillar {
+                grid-template-columns: 2fr 4fr 6fr;
+                gap: 2.5rem;
+                align-items: baseline;
+                padding: 4rem 0;
+            }
+        }
+
+        .pillar-number {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--brass);
+            line-height: 1;
+        }
+
+        .pillar-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+            color: var(--ivory);
+            line-height: 1.3;
+        }
+
+        .pillar-desc {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 300;
+            font-size: var(--body-text);
+            color: var(--parchment);
+            line-height: 1.75;
+        }
+
+        /* ========== SEÇÃO CONCIERGE ========== */
+        .concierge {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 7rem 1.5rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .concierge {
+                padding: 10rem 3rem;
+            }
+        }
+
+        .concierge-ornament {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .concierge .section-heading {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .concierge-sub {
+            margin-top: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+            color: var(--parchment);
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .concierge-actions {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .concierge-actions {
+                flex-direction: row;
+            }
+        }
+
+        .concierge-actions .btn-atelier {
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .concierge-actions .btn-atelier {
+                width: auto;
+            }
+        }
+
+        .copy-email-wrap {
+            margin-top: 1.5rem;
+        }
+
+        .copy-email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(168, 159, 145, 0.8);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            transition: color 300ms ease;
+        }
+
+        .copy-email-btn:hover {
+            color: var(--brass);
+        }
+
+        .copy-email-btn svg {
+            width: 0.875rem;
+            height: 0.875rem;
+            color: var(--brass);
+        }
+
+        /* ========== RODAPÉ ========== */
+        footer {
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid var(--gold-line);
+            padding: 3rem 0;
+        }
+
+        .footer-inner {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(168, 159, 145, 0.7);
+        }
+
+        @media (min-width: 768px) {
+            .footer-inner {
+                padding: 0 3rem;
+                flex-direction: row;
+            }
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-brand .db {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.875rem;
+            color: var(--brass);
+        }
+
+        .footer-brand .divider {
+            color: rgba(168, 159, 145, 0.5);
+        }
+
+        .footer-brand .location {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            text-transform: capitalize;
+            letter-spacing: 0;
+            font-size: 1rem;
+            color: var(--parchment);
+        }
+
+        .footer-rights {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-rights {
+                text-align: right;
+            }
+        }
+
+        /* ========== ANIMAÇÕES ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== AJUSTES FINOS PARA MOBILE ========== */
+        @media (max-width: 480px) {
+            :root {
+                --hero-title: clamp(1.8rem, 8vw, 2.6rem);
+                --section-heading: clamp(1.4rem, 6vw, 2rem);
+                --editorial-italic: clamp(1rem, 4vw, 1.2rem);
+                --body-text: 0.95rem;
+                --drop-cap-size: 2.6rem;
+            }
+
+            .hero-actions .btn-atelier {
+                padding: 0.85rem 1.25rem;
+                font-size: 0.68rem;
+                letter-spacing: 0.14em;
+                width: 100%;
+            }
+
+            .header-inner {
+                height: 4.5rem;
+                padding: 0 1rem;
+            }
+
+            .header-cta {
+                font-size: 0.65rem;
+                letter-spacing: 0.12em;
+            }
+
+            .hero-caption {
+                margin-left: 0;
+                margin-top: 1rem;
+                max-width: 100%;
+            }
+
+            .trajectory-quote p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            :root {
+                --hero-title: 1.6rem;
+                --section-heading: 1.3rem;
+            }
+
+            .pillar {
+                padding: 2rem 0;
+            }
+
+            .pillar-number {
+                font-size: 1.8rem;
+            }
+
+            .pillar-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Textura orgânica sutil -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Globo Terrestre Antigo Estilizado -->
+    <div id="antique-globe-bg" aria-hidden="true">
+        <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M300 35C446.355 35 565 153.645 565 300C565 446.355 446.355 565 300 565" stroke="#c5a059" stroke-width="1.5"/>
+            <path d="M300 22C453.535 22 578 146.465 578 300C578 453.535 453.535 578 300 578" stroke="#c5a059" stroke-width="0.75" stroke-dasharray="4 4"/>
+            <g transform="rotate(-22 300 300)">
+                <line x1="300" y1="20" x2="300" y2="580" stroke="#c5a059" stroke-width="1.2"/>
+                <circle cx="300" cy="300" r="235" stroke="#c5a059" stroke-width="1.3"/>
+                <circle cx="300" cy="300" r="228" stroke="#c5a059" stroke-width="0.5"/>
+                <ellipse cx="300" cy="300" rx="235" ry="42" stroke="#c5a059" stroke-width="0.9"/>
+                <ellipse cx="300" cy="215" rx="218" ry="34" stroke="#c5a059" stroke-width="0.7"/>
+                <ellipse cx="300" cy="385" rx="218" ry="34" stroke="#c5a059" stroke-width="0.7"/>
+                <ellipse cx="300" cy="135" rx="168" ry="22" stroke="#c5a059" stroke-width="0.6"/>
+                <ellipse cx="300" cy="465" rx="168" ry="22" stroke="#c5a059" stroke-width="0.6"/>
+                <ellipse cx="300" cy="300" rx="48" ry="235" stroke="#c5a059" stroke-width="0.8"/>
+                <ellipse cx="300" cy="300" rx="115" ry="235" stroke="#c5a059" stroke-width="0.8"/>
+                <ellipse cx="300" cy="300" rx="180" ry="235" stroke="#c5a059" stroke-width="0.8"/>
+                <path d="M300 272L305 295L328 300L305 305L300 328L295 305L272 300L295 295L300 272Z" stroke="#c5a059" stroke-width="0.8"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="brand-link" aria-label="Daniel Bewick Início">
+                <!-- LOGO: quadrado + círculo + imagem redonda -->
+                <div class="monogram">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <rect x="6" y="6" width="36" height="36" transform="rotate(45 24 24)" stroke="currentColor" stroke-width="0.9"/>
+                        <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+                    </svg>
+                    <!-- Imagem placeholder redonda -->
+                    <img src="https://res.cloudinary.com/dbwqwgbtx/image/upload/v1795721458/danney_logo_1_db9ljw.png"
+                         alt="Logo Daniel Bewick"
+                         class="logo-img">
+                </div>
+                <div class="brand-text">
+                    <span class="name">Daniel Bewick</span>
+                    <span class="location">London &bull; Brasil</span>
+                </div>
+            </a>
+
+            <nav class="main-nav">
+                <a href="#trajetoria">Trajetória</a>
+                <a href="#metodologia">Mentoria</a>
+                <a href="#concierge">Concierge</a>
+            </nav>
+
+            <a href="https://wa.me/5516991767960?text=Ol%C3%A1%20Daniel%2C%20gostaria%20de%20conversar%20sobre%20sua%20mentoria%20particular%20de%20ingl%C3%AAs%20brit%C3%A2nico."
+               target="_blank"
+               rel="noopener noreferrer"
+               class="header-cta">
+                Agendar Conversa
+            </a>
+        </div>
+    </header>
+
+    <main class="ambient-glow" style="position: relative; z-index: 10;">
+
+        <!-- 1. HERO -->
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-content reveal">
+                    <div class="hero-ornament">
+                        <svg width="38" height="14" viewBox="0 0 38 14" fill="none" aria-hidden="true">
+                            <path d="M1 7C8 7 10 1 16 1C21 1 22 13 28 13C33 13 35 7 37 7" stroke="#c5a059" stroke-width="0.9"/>
+                            <circle cx="16" cy="7" r="1.5" fill="#c5a059"/>
+                        </svg>
+                        <span>Nativo de Londres &mdash; Mentoria Particular no Brasil</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Daniel Bewick
+                        <span class="subtitle">O inglês de Londres, moldado pela alta hospitalidade internacional.</span>
+                    </h1>
+
+                    <div class="hero-divider"></div>
+
+                    <p class="hero-description">
+                        Uma abordagem sob medida para executivos, líderes e viajantes exigentes que buscam naturalidade britânica, repertório cultural refinado e segurança absoluta em ambientes de alto nível.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="https://wa.me/5516991767960?text=Ol%C3%A1%20Daniel%2C%20vim%20pela%20sua%20p%C3%A1gina%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20particulares."
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn-atelier btn-primary-gold">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                            <span>Conversar via WhatsApp</span>
+                        </a>
+
+                        <a href="mailto:danielppbewick@gmail.com?subject=Mentoria%20Particular%20de%20Ingl%C3%AAs%20-%20Daniel%20Bewick"
+                           class="btn-atelier">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--brass);">
+                                <rect x="2" y="4" width="20" height="16" rx="1"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                            <span>Enviar E-mail</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-photo-col reveal" style="transition-delay: 180ms;">
+                    <div class="hero-corner-ornament"></div>
+
+                    <div class="editorial-photo-wrap hero-photo">
+                        <div class="photo-brass-frame"></div>
+                        <img src="https://res.cloudinary.com/dbwqwgbtx/image/upload/v1795722195/danney_photo_1_pcgbdv.webp"
+                             alt="Daniel Bewick — Origens em Londres, Reino Unido">
+                    </div>
+
+                    <div class="hero-caption">
+                        <p>“A verdadeira fluência não está na gramática, mas na elegância com que se conduz uma conversa.”</p>
+                        <span>London Heritage &bull; Est. UK</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divisor Ornamental -->
+        <div class="ornament-divider">
+            <div class="ornament-divider-inner">
+                <div class="ornament-divider-line left"></div>
+                <svg width="64" height="22" viewBox="0 0 64 22" fill="none" aria-hidden="true">
+                    <path d="M2 11C10 11 14 3 22 3C28 3 30 11 32 11C34 11 36 3 42 3C50 3 54 11 62 11" stroke="#c5a059" stroke-width="0.9"/>
+                    <path d="M2 11C10 11 14 19 22 19C28 19 30 11 32 11C34 11 36 19 42 19C50 19 54 11 62 11" stroke="#c5a059" stroke-width="0.5" opacity="0.6"/>
+                    <circle cx="32" cy="11" r="2.2" fill="#c5a059"/>
+                </svg>
+                <div class="ornament-divider-line right"></div>
+            </div>
+        </div>
+
+        <!-- 2. TRAJETÓRIA -->
+        <section id="trajetoria" class="trajectory">
+            <div class="trajectory-grid">
+                <div class="trajectory-left reveal">
+                    <div>
+                        <span class="section-label">I. Origem &amp; Bastidores</span>
+                        <h2 class="section-heading">Dos salões cinco estrelas às conversas decisivas.</h2>
+                    </div>
+
+                    <div class="editorial-photo-wrap trajectory-photo">
+                        <div class="photo-brass-frame"></div>
+                        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=85"
+                             alt="Arquitetura clássica de Londres">
+                    </div>
+
+                    <blockquote class="trajectory-quote">
+                        <p>“Atender personalidades globais exige leitura rápida de ambiente, tato diplomático e domínio absoluto das nuances do idioma.”</p>
+                        <footer>Hospitalidade de Alto Padrão &bull; Londres &amp; Brasil</footer>
+                    </blockquote>
+                </div>
+
+                <div class="trajectory-right reveal" style="transition-delay: 150ms;">
+                    <p class="drop-cap">
+                        Nascido e formado em Londres, Daniel Bewick traz para o ensino do idioma inglês uma vivência rara, forjada longe das salas de aula convencionais. Antes de estabelecer-se no Brasil, construiu uma carreira sólida na liderança da hotelaria internacional cinco estrelas — um universo onde a excelência nos detalhes, a discrição e a comunicação impecável são inegociáveis.
+                    </p>
+
+                    <p>
+                        Como chefe de operações e hospitalidade de luxo, Daniel esteve na linha de frente do atendimento pessoal a grandes ícones da música mundial — incluindo lendas do rock como <span class="highlight">Scorpions</span> e <span class="highlight">Iron Maiden</span> — além de artistas nacionais de destaque, diplomatas, políticos e figuras públicas de alta visibilidade.
+                    </p>
+
+                    <p>
+                        Essa trajetória moldou um olhar singular sobre a língua inglesa. Mais do que regras gramaticais rígidas, Daniel ensina o <span class="editorial-highlight">inglês vivo das grandes mesas, bastidores e negociações</span>: a cadência londrina autêntica, o vocabulário preciso, o humor sutil britânico e a postura comunicativa esperada em ambientes executivos e cosmopolitas.
+                    </p>
+
+                    <div class="trajectory-facts">
+                        <div class="fact">
+                            <span class="fact-title">Londres, UK</span>
+                            <span class="fact-sub">Sotaque &amp; Cultura Nativa</span>
+                        </div>
+                        <div class="fact">
+                            <span class="fact-title">Hotelaria 5★</span>
+                            <span class="fact-sub">Etiqueta &amp; Liderança</span>
+                        </div>
+                        <div class="fact">
+                            <span class="fact-title">Atendimento VIP</span>
+                            <span class="fact-sub">Artistas &amp; Líderes Globais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. METODOLOGIA -->
+        <section id="metodologia" class="methodology">
+            <div class="container">
+                <div class="methodology-header reveal">
+                    <span class="section-label">II. A Experiência de Aprendizado</span>
+                    <h2 class="section-heading">Uma mentoria desenhada como alfaiataria inglesa.</h2>
+                    <p class="methodology-sub">Sem turmas genéricas ou apostilas engessadas. Cada encontro reflete seus objetivos profissionais, viagens e repertório pessoal.</p>
+                </div>
+
+                <div class="pillars">
+                    <article class="pillar reveal">
+                        <div class="pillar-number">I.</div>
+                        <h3 class="pillar-title">Pronúncia e Nuances Britânicas Reais</h3>
+                        <p class="pillar-desc">Afine sua escuta e dicção diretamente com um londrino nativo. Compreenda expressões idiomáticas contemporâneas, entonação natural e as sutilezas que diferenciam um falante funcional de um comunicador verdadeiramente articulado em Londres, Nova York ou qualquer capital global.</p>
+                    </article>
+
+                    <article class="pillar reveal">
+                        <div class="pillar-number">II.</div>
+                        <h3 class="pillar-title">Comunicação Executiva, Diplomacia e Repertório</h3>
+                        <p class="pillar-desc">Prepare-se para reuniões de conselho, apresentações internacionais, jantares de negócios e hospitalidade de alto nível. Desenvolva vocabulário estratégico e fluidez cultural sobre temas como negócios, artes, viagens, política internacional e gastronomia.</p>
+                    </article>
+
+                    <article class="pillar reveal">
+                        <div class="pillar-number">III.</div>
+                        <h3 class="pillar-title">Mentoria Sob Medida e Discrição Absoluta</h3>
+                        <p class="pillar-desc">Herdando o código de confidencialidade dos grandes hotéis cinco estrelas, o atendimento é estritamente individual e personalizado conforme sua agenda. Aulas online ou presenciais (sob consulta) com acompanhamento contínuo e curadoria exclusiva de materiais.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CONCIERGE -->
+        <section id="concierge" class="concierge reveal">
+            <div class="concierge-ornament" aria-hidden="true">
+                <svg width="90" height="28" viewBox="0 0 90 28" fill="none">
+                    <path d="M45 3C49 3 52 8 58 8C65 8 68 2 76 2C82 2 86 6 88 10" stroke="#c5a059" stroke-width="0.9"/>
+                    <path d="M45 3C41 3 38 8 32 8C25 8 22 2 14 2C8 2 4 6 2 10" stroke="#c5a059" stroke-width="0.9"/>
+                    <path d="M45 25C49 25 52 20 58 20C65 20 68 26 76 26C82 26 86 22 88 18" stroke="#c5a059" stroke-width="0.6" opacity="0.65"/>
+                    <path d="M45 25C41 25 38 20 32 20C25 20 22 26 14 26C8 26 4 22 2 18" stroke="#c5a059" stroke-width="0.6" opacity="0.65"/>
+                    <circle cx="45" cy="14" r="3" stroke="#c5a059" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <span class="section-label">III. Concierge &amp; Agendamento</span>
+
+            <h2 class="section-heading">Agende uma conversa sobre seus objetivos.</h2>
+
+            <p class="concierge-sub">Entre em contato diretamente para agendar uma sessão diagnóstica inicial e alinhar um plano de mentoria compatível com o seu ritmo.</p>
+
+            <div class="concierge-actions">
+                <a href="https://wa.me/5516991767960?text=Ol%C3%A1%20Daniel%2C%20gostaria%20de%20agendar%20uma%20conversa%20inicial%20sobre%20sua%20mentoria%20de%20ingl%C3%AAs."
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn-atelier btn-primary-gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                <a href="mailto:danielppbewick@gmail.com?subject=Contato%20-%20Mentoria%20de%20Ingl%C3%AAs%20Brit%C3%A2nico"
+                   class="btn-atelier">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--brass);">
+                        <rect x="2" y="4" width="20" height="16" rx="1"/>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                    <span>Enviar email</span>
+                </a>
+            </div>
+
+            <div class="copy-email-wrap">
+                <button id="copy-email-btn"
+                        type="button"
+                        data-email="danielppbewick@gmail.com"
+                        class="copy-email-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="9" y="9" width="13" height="13" rx="1"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    <span id="copy-email-label">Copiar endereço de e-mail</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="db">DB</span>
+                <span class="divider">&mdash;</span>
+                <span class="location">London &bull; Brasil</span>
+            </div>
+
+            <p class="footer-rights">
+                Todos os direitos reservados &mdash; Daniel Bewick
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Animações de revelação
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 2. Rotação sutil do globo
+            const globeBg = document.getElementById('antique-globe-bg');
+            let ticking = false;
+
+            window.addEventListener('scroll', () => {
+                if (!ticking && globeBg) {
+                    window.requestAnimationFrame(() => {
+                        const scrollY = window.scrollY;
+                        const rotation = scrollY * 0.025;
+                        const translateY = scrollY * 0.06;
+                        globeBg.style.transform = `translateY(${translateY}px) rotate(${rotation}deg)`;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // 3. Copiar e-mail
+            const copyBtn = document.getElementById('copy-email-btn');
+            const copyLabel = document.getElementById('copy-email-label');
+
+            if (copyBtn && copyLabel) {
+                copyBtn.addEventListener('click', () => {
+                    const email = copyBtn.getAttribute('data-email');
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = email;
+                    tempInput.style.position = 'fixed';
+                    tempInput.style.opacity = '0';
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+
+                    try {
+                        document.execCommand('copy');
+                        const originalText = copyLabel.textContent;
+                        copyLabel.textContent = 'E-mail copiado com sucesso';
+                        copyLabel.style.color = 'var(--brass)';
+
+                        setTimeout(() => {
+                            copyLabel.textContent = originalText;
+                            copyLabel.style.color = '';
+                        }, 2800);
+                    } catch (err) {
+                        console.error('Não foi possível copiar o e-mail:', err);
+                    } finally {
+                        document.body.removeChild(tempInput);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
